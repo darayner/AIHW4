@@ -8,8 +8,7 @@ public class SearchAlgorithm {
 	int newRandRoom;
 	int newRandTimeSlot;
 	
-  // Your search algorithm should return a solution in the form of a valid
-  // schedule before the deadline given (deadline is given by system time in ms)
+ // returns schedule based on simulated annealing search
   public Schedule simulatedAnnealing(SchedulingProblem problem, long deadline) {
 	 double temperature = 10000;
 	 double coolingRate = .05;
@@ -26,7 +25,7 @@ public class SearchAlgorithm {
 		 if (energy > 0) { // newSchedule is better after moving course
 			currentScheduleVal = newScheduleVal;
 		 }
-		 else if (Math.exp(energy / temperature) > Math.random()) { // compute probability of taking bad move
+		 else if (Math.exp(energy / temperature) > Math.random()) { // compute probability of accepting bad move
 			 currentScheduleVal = newScheduleVal;
 		 }
 		 else{
@@ -39,7 +38,7 @@ public class SearchAlgorithm {
 	 return solution;
   }
   
-	
+// moves course to random location
   public void moveRandCourse(Schedule solution, SchedulingProblem problem){
 	  Random rand = new Random();
 	  boolean courseFound = false;
@@ -78,12 +77,13 @@ public class SearchAlgorithm {
 		  }
 	  }
   }
-  
+  // undos course location (swap back)
   public void moveCourseBack(Schedule solution){
 	  solution.schedule[randRoom][randTimeSlot] = solution.schedule[newRandRoom][newRandTimeSlot]; // swap course back to location
 	  solution.schedule[newRandRoom][newRandTimeSlot] = -1;
   }
     
+  // generate random schedule to be used by simulated annealing
   public Schedule genRandSchedule(SchedulingProblem problem){
 	 Schedule randSchedule = problem.getEmptySchedule();
 	 Random rand = new Random();
@@ -106,39 +106,51 @@ public class SearchAlgorithm {
 	 return randSchedule; 
   }
   
-  public Schedule backTrackCSP(SchedulingProblem problem, long deadline){
-	 Schedule solution = problem.getEmptySchedule();
-	 boolean csp = recursiveBackTrack(solution, problem, deadline, 0);
-	 
-	 if (csp) {
-		 return solution;
-	 }
-	 
-	 return null;
-  }
   
-  public boolean recursiveBackTrack(Schedule solution, SchedulingProblem problem, long deadline, int currCourse) {
-	
-	  if (currCourse >= problem.courses.size()) { // chose unassigned course
-			  return true;
-	  }
-		
-	  for (int i = 0; i < solution.schedule.length; i++) {
-		  for (int j = 0; j < solution.schedule[i].length; j++) {
-			 Course course = problem.courses.get(currCourse);
-			  if (course.timeSlotValues[j] > 0 && solution.schedule[i][j] == -1) {  // constraints
-				  solution.schedule[i][j] = currCourse;
-				  boolean nextAssign = recursiveBackTrack(solution, problem, deadline, currCourse + 1); // assign next course to room[timeslot]
-				  if (nextAssign) { // assignment is good to move on to next
-					  return true;
-				  }
-				  solution.schedule[i][j] = -1; // unassign room[timeslot]
-			  }
-		  }
-	  }
-	   
-	  return false;
-  }
+//ADD Back track here Andrew
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
   
   
 

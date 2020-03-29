@@ -78,7 +78,7 @@ public class Main {
     System.out.println("Time: " + timeElapsed);
     
     long startTime1 = System.nanoTime();
-    solution2 = search.backTrackCSP(test1, deadline);
+                                             // back track goes here
     long endTime1 = System.nanoTime();
     long timeElapsed1 = endTime1 - startTime1;
     System.out.println("Time: " + timeElapsed1);
