@@ -108,51 +108,7 @@ public class SearchAlgorithm {
   
   
 //ADD Back track here Andrew
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-  
+   
 
   // This is a very naive baseline scheduling strategy
   // It should be easily beaten by any reasonable strategy
