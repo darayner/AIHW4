@@ -114,7 +114,7 @@ public class Main {
     solution6 = search.backTrackCSP(test1, deadline, 2);//backtracking with value and distance optimization
     long endTime5 = System.nanoTime();
     long timeElapsed5 = endTime5 - startTime5;
-    System.out.println("BacktrackDist Time: " + timeElapsed4);
+    System.out.println("BacktrackDist Time: " + timeElapsed5);
     
     
     double score1 = test1.evaluateSchedule(solution1);
