@@ -8,9 +8,9 @@ public class Main {
     int nRooms = 0;
     int nCourses = 0;
     int TIME_LIMIT_SECONDS = 0;
-    int algorithm = 1;
+    int algorithm = 0;
     long seed = 0;
-/*
+
     if (args.length == 6) {
       try {
         nBuildings = Integer.parseInt(args[0]);
@@ -27,14 +27,7 @@ public class Main {
       System.out.println("ERROR: Incorrect number of arguments (should have six).");
       System.exit(1);
     }
-*/
-    
-    nBuildings = 10;
-    nRooms = 100;
-    nCourses = 300;
-    TIME_LIMIT_SECONDS = 10;
-    algorithm = 1;
-    seed = 300;
+
     System.out.println("Number of Buildings: " + nBuildings);
     System.out.println("Number of Rooms: " + nRooms);
     System.out.println("Number of Courses: " + nCourses);
@@ -49,27 +42,45 @@ public class Main {
     SearchAlgorithm search = new SearchAlgorithm();
 
     long deadline = System.currentTimeMillis() + (1000 * TIME_LIMIT_SECONDS);
-    /*
+    
     // Add your search algorithms here, each with a unique number
     Schedule solution = null;
     if (algorithm == 0) {
-      solution = search.naiveBaseline(test1, deadline);
-    }else if (algorithm == 1){
-      solution = search.simulatedAnnealing(test1, deadline);
+    	solution = search.naiveBaseline(test1, deadline);
+    }else if(algorithm == 1){
+    	solution = search.simulatedAnnealing(test1, deadline, 0);//regular simulatedAnnealing
     }else if(algorithm == 2){
-    	solution = search.backTrackCSP(test1, deadline, 0); //regular backtracking
+    	solution = search.simulatedAnnealing(test1, deadline, 1);//improved simulatedAnnealing
     }else if(algorithm == 3){
-    	solution = search.backTrackCSP(test1, deadline, 1); //backtracking with value optimization
+    	solution = search.backTrackCSP(test1, deadline, 0); //regular backtracking
     }else if(algorithm == 4){
+    	solution = search.backTrackCSP(test1, deadline, 1); //backtracking with value optimization
+    }else if(algorithm == 5){
     	solution = search.backTrackCSP(test1, deadline, 2); //backtracking with value and distance optimization
     }else {
       System.out.println("ERROR: Given algorithm number does not exist!");
       System.exit(1);
     }
+
+    System.out.println("Deadline: " + deadline);
+    System.out.println("Current: " + System.currentTimeMillis());
+    System.out.println("Time remaining: " + (deadline - System.currentTimeMillis()));
+    if (System.currentTimeMillis() > deadline) {
+      System.out.println("EXCEEDED DEADLINE");
+    }
+
+    double score = test1.evaluateSchedule(solution);
+    System.out.println();
+    System.out.println("Score: " + score);
+    System.out.println();
+  }  
+}
+    
+    /*
     for (Course i : test1.courses) {
         System.out.println(Arrays.toString(i.timeSlotValues));
     }
-    */
+    
     System.out.println();
     
     Schedule solution1 = null;
@@ -135,3 +146,4 @@ public class Main {
     System.out.println();
   }  
 }
+*/

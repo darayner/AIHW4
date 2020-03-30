@@ -277,7 +277,7 @@ public class SearchAlgorithm {
 			IndexedEntry<Double> entry = new IndexedEntry<>(i, unordered.get(i));
 			ordered.add(entry);
 		}
-		Collections.sort(ordered, Collections.reverseOrder());
+		Collections.sort(ordered);
 
 		return ordered;
 	}
